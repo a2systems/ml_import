@@ -1,0 +1,73 @@
+<odoo>
+
+    <record id="view_ml_file_form" model="ir.ui.view">
+        <field name="name">ml.file.form</field>
+        <field name="model">ml.file</field>
+        <field name="arch" type="xml">
+	    <form>
+		<header>
+			<button name="btn_process_file"
+				string="Procesar"
+				invisible="state != 'draft'" type="object" />
+	                <field name="state" widget="statusbar" />
+		</header>
+		<sheet>
+			<group>
+		                <field name="name" />
+				<field name="date" />
+				<field name="sales_file" />
+			</group>
+			<notebook>
+				<page string="Pedidos">
+					<field name="sale_ids" readonly="1" >
+						<tree>
+							<field name="name" />
+							<field name="date_order" />
+							<field name="partner_id" optional="hide"/>
+							<field name="amount_total" />
+							<field name="state" />
+						</tree>
+					</field>
+				</page>
+				<page string="Clientes">
+					<field name="partner_ids" readonly="1"/>
+				</page>
+				<page string="Productos">
+					<field name="product_ids" readonly="1"/>
+				</page>
+			</notebook>
+		</sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_ml_file_tree" model="ir.ui.view">
+        <field name="name">ml.file.tree</field>
+        <field name="model">ml.file</field>
+        <field name="arch" type="xml">
+	   <tree>
+                <field name="name" />
+                <field name="date" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_ml_file">
+        <field name="name">Importar Archivo ML</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ml.file</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_ml_import"
+	    name="Importar Archivo ML"
+	    action="action_ml_file"
+	    parent="sale.sale_order_menu"
+	    sequence="200"
+    />
+
+
+</odoo>
