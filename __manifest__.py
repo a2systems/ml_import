@@ -1,18 +1,17 @@
 {
-    "name": "ml_import",
+    "name": "pos_inv_other_company",
     "summary": """
-        ML Import
+        POS inv other company
         """,
     "description": """
     """,
-    "category": "Sales",
+    "category": "Point of Sale",
     "version": "17.0.1.0",
     # any module necessary for this one to work correctly
-    "depends": ["sale","product","l10n_ar","sale_management"],
+    "depends": ["sale","account","point_of_sale","pos_order_to_sale_order"],
     # always loaded
     "data": [
-        "sale_view.xml",
-        "security/ir.model.access.csv"
+        "views/res_config_settings_view.xml",
     ],
     'license': 'LGPL-3',
 }

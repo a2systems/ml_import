@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_res_config_settings_form_other_co" model="ir.ui.view">
+        <field name="name">res.config.settings.other.co</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="pos_order_to_sale_order.view_res_config_settings_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pos_create_sale_order']" position="after">
+                <block title="Other Company" id="pos_other_co">
+                    <setting string="Other Company">
+                        <field name="pos_other_company_id" />
+                    </setting>
+
+                    <setting string="Other Journal">
+                        <field name="pos_other_journal_id" domain="[('type','=','cash'),('company_id','=',pos_other_company_id)]"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
